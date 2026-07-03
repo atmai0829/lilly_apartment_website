@@ -5,34 +5,34 @@ import { useLanguage } from "../../context/LanguageContext";
 const base = import.meta.env.BASE_URL;
 const PLAN_PHOTOS = {
   "plan-a": [
-    base + "apartmentpictures/planA_1.jpg",
-    base + "apartmentpictures/planA_2.jpg",
-    base + "apartmentpictures/planA_3.jpg",
-    base + "apartmentpictures/planA_4.jpg",
-    base + "apartmentpictures/planA_5.jpg",
-    base + "apartmentpictures/planA_6.jpg",
-    base + "apartmentpictures/planA_7.jpg",
-    base + "apartmentpictures/planA_bathroom.jpg",
-    base + "apartmentpictures/planA_bathroom2.jpg",
-    base + "apartmentpictures/planA_counter.jpg",
-    base + "apartmentpictures/planA_kitchen.jpg",
+    base + "apartmentpictures/planA_1.webp",
+    base + "apartmentpictures/planA_2.webp",
+    base + "apartmentpictures/planA_3.webp",
+    base + "apartmentpictures/planA_4.webp",
+    base + "apartmentpictures/planA_5.webp",
+    base + "apartmentpictures/planA_6.webp",
+    base + "apartmentpictures/planA_7.webp",
+    base + "apartmentpictures/planA_bathroom.webp",
+    base + "apartmentpictures/planA_bathroom2.webp",
+    base + "apartmentpictures/planA_counter.webp",
+    base + "apartmentpictures/planA_kitchen.webp",
   ],
   "plan-b": [
-    base + "apartmentpictures/planB_1.jpg",
-    base + "apartmentpictures/planB_2.jpg",
-    base + "apartmentpictures/planB_3.jpg",
-    base + "apartmentpictures/planB_4.jpg",
-    base + "apartmentpictures/planB_5.jpg",
-    base + "apartmentpictures/planB_6.jpg",
-    base + "apartmentpictures/planB_7.jpg",
-    base + "apartmentpictures/planB_8.jpg",
+    base + "apartmentpictures/planB_1.webp",
+    base + "apartmentpictures/planB_2.webp",
+    base + "apartmentpictures/planB_3.webp",
+    base + "apartmentpictures/planB_4.webp",
+    base + "apartmentpictures/planB_5.webp",
+    base + "apartmentpictures/planB_6.webp",
+    base + "apartmentpictures/planB_7.webp",
+    base + "apartmentpictures/planB_8.webp",
   ],
   "plan-c": [
-    base + "apartmentpictures/planC_1new.jpg",
-    base + "apartmentpictures/planC_2.jpg",
-    base + "apartmentpictures/planC_3.jpg",
-    base + "apartmentpictures/planC_4.jpg",
-    base + "apartmentpictures/planC_tv.jpg",
+    base + "apartmentpictures/planC_1new.webp",
+    base + "apartmentpictures/planC_2.webp",
+    base + "apartmentpictures/planC_3.webp",
+    base + "apartmentpictures/planC_4.webp",
+    base + "apartmentpictures/planC_tv.webp",
   ],
 };
 
@@ -88,6 +88,7 @@ export default function FloorPlans() {
                 src={photos[photoIndex]}
                 alt={plan.name + " photo " + (photoIndex + 1)}
                 className="floor-plans__diagram-img"
+                loading="lazy"
               />
               <div className="floor-plans__photo-nav">
                 <button
