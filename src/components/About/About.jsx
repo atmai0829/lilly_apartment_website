@@ -11,16 +11,19 @@ export default function About() {
           <div className="about__visual">
             <div className="about__img-main">
               <img
-                src={import.meta.env.BASE_URL + "apartmentpictures/front.jpeg"}
+                src={import.meta.env.BASE_URL + "apartmentpictures/front.webp"}
                 alt="Lilly Apartment - Front View"
                 className="about__img"
               />
             </div>
             <div className="about__img-accent">
               <img
-                src={import.meta.env.BASE_URL + "apartmentpictures/planA_6.jpg"}
+                src={
+                  import.meta.env.BASE_URL + "apartmentpictures/planA_6.webp"
+                }
                 alt="Lilly Apartment - Plan A View"
                 className="about__img"
+                loading="lazy"
               />
             </div>
             <div className="about__badge">

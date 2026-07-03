@@ -4,15 +4,15 @@ import { useLanguage } from "../../context/LanguageContext";
 
 const base = import.meta.env.BASE_URL;
 const galleryItems = [
-  { id: 1, src: base + "apartmentpictures/event_lounge.jpeg" },
-  { id: 2, src: base + "apartmentpictures/counter1.jpg" },
-  { id: 3, src: base + "apartmentpictures/planB_5.jpg" },
-  { id: 4, src: base + "apartmentpictures/planA_1.jpg" },
-  { id: 5, src: base + "apartmentpictures/planB_7.jpg" },
-  { id: 6, src: base + "apartmentpictures/planA_6.jpg" },
-  { id: 7, src: base + "apartmentpictures/planC_1new.jpg" },
-  { id: 8, src: base + "apartmentpictures/planC_tv.jpg" },
-  { id: 9, src: base + "apartmentpictures/planA_kitchen.jpg" },
+  { id: 1, src: base + "apartmentpictures/event_lounge.webp" },
+  { id: 2, src: base + "apartmentpictures/counter1.webp" },
+  { id: 3, src: base + "apartmentpictures/planB_5.webp" },
+  { id: 4, src: base + "apartmentpictures/planA_1.webp" },
+  { id: 5, src: base + "apartmentpictures/planB_7.webp" },
+  { id: 6, src: base + "apartmentpictures/planA_6.webp" },
+  { id: 7, src: base + "apartmentpictures/planC_1new.webp" },
+  { id: 8, src: base + "apartmentpictures/planC_tv.webp" },
+  { id: 9, src: base + "apartmentpictures/planA_kitchen.webp" },
 ];
 
 export default function Gallery() {
