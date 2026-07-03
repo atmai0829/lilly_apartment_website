@@ -39,12 +39,22 @@ jobs:
           path: dist
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  needs: build
+  runs-on: ubuntu-latest
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  steps:
+    - name: Deploy to GitHub Pages (attempt 1)
+      id: deployment
+      continue-on-error: true
+      uses: actions/deploy-pages@v4
+
+    - name: Wait before retry
+      if: steps.deployment.outcome == 'failure'
+      run: sleep 20
+
+    - name: Deploy to GitHub Pages (attempt 2)
+      if: steps.deployment.outcome == 'failure'
+      id: deployment_retry
+      uses: actions/deploy-pages@v4
