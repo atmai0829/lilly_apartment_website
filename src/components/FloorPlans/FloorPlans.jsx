@@ -1,0 +1,132 @@
+import { useState, useEffect } from 'react';
+import './FloorPlans.css';
+import { useLanguage } from '../../context/LanguageContext';
+
+const PLAN_PHOTOS = {
+  'plan-a': [
+    '/apartmentpictures/planA_1.jpg',
+    '/apartmentpictures/planA_2.jpg',
+    '/apartmentpictures/planA_3.jpg',
+    '/apartmentpictures/planA_4.jpg',
+    '/apartmentpictures/planA_5.jpg',
+    '/apartmentpictures/planA_6.jpg',
+    '/apartmentpictures/planA_7.jpg',
+    '/apartmentpictures/planA_bathroom.jpg',
+    '/apartmentpictures/planA_bathroom2.jpg',
+    '/apartmentpictures/planA_counter.jpg',
+    '/apartmentpictures/planA_kitchen.jpg',
+  ],
+  'plan-b': [
+    '/apartmentpictures/planB_1.jpg',
+    '/apartmentpictures/planB_2.jpg',
+    '/apartmentpictures/planB_3.jpg',
+    '/apartmentpictures/planB_4.jpg',
+    '/apartmentpictures/planB_5.jpg',
+    '/apartmentpictures/planB_6.jpg',
+    '/apartmentpictures/planB_7.jpg',
+    '/apartmentpictures/planB_8.jpg',
+  ],
+  'plan-c': [
+    '/apartmentpictures/planC_1new.jpg',
+    '/apartmentpictures/planC_2.jpg',
+    '/apartmentpictures/planC_3.jpg',
+    '/apartmentpictures/planC_4.jpg',
+    '/apartmentpictures/planC_tv.jpg',
+  ],
+};
+
+export default function FloorPlans() {
+  const { t } = useLanguage();
+  const fp = t.floorPlans;
+  const plans = fp.plans.map((p) => ({
+    ...p,
+    features: [...p.extraFeatures, ...fp.shared],
+  }));
+
+  const [selected, setSelected] = useState('plan-a');
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const plan = plans.find((p) => p.id === selected);
+  const photos = PLAN_PHOTOS[selected];
+
+  useEffect(() => {
+    setPhotoIndex(0);
+  }, [selected]);
+
+  const prevPhoto = () => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length);
+  const nextPhoto = () => setPhotoIndex((i) => (i + 1) % photos.length);
+
+  return (
+    <section id='floor-plans' className='floor-plans section section--alt'>
+      <div className='container'>
+        <div className='section__header'>
+          <p className='section__label'>{fp.label}</p>
+          <h2 className='section__title'>{fp.title}</h2>
+          <p className='section__subtitle'>{fp.subtitle}</p>
+        </div>
+
+        <div className='floor-plans__tabs'>
+          {plans.map((p) => (
+            <button
+              key={p.id}
+              className={'floor-plans__tab ' + (selected === p.id ? 'floor-plans__tab--active' : '')}
+              onClick={() => setSelected(p.id)}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+
+        <div className='floor-plans__detail'>
+          <div className='floor-plans__preview'>
+            <div className='floor-plans__diagram'>
+              <img
+                src={photos[photoIndex]}
+                alt={plan.name + ' photo ' + (photoIndex + 1)}
+                className='floor-plans__diagram-img'
+              />
+              <div className='floor-plans__photo-nav'>
+                <button className='floor-plans__photo-btn' onClick={prevPhoto} aria-label='Previous photo'>&#8249;</button>
+                <span className='floor-plans__photo-counter'>{photoIndex + 1} / {photos.length}</span>
+                <button className='floor-plans__photo-btn' onClick={nextPhoto} aria-label='Next photo'>&#8250;</button>
+              </div>
+            </div>
+          </div>
+
+          <div className='floor-plans__info'>
+            <h3 className='floor-plans__name'>{plan.name}</h3>
+            <p className='floor-plans__tagline'>{plan.tagline}</p>
+            <div className='floor-plans__meta'>
+              <span className='floor-plans__meta-item'>🛌 {plan.beds}</span>
+              <span className='floor-plans__meta-item'>&#128703; {plan.baths}</span>
+              <span className='floor-plans__meta-item'>{plan.view}</span>
+              {plan.balcony && (
+                <span className='floor-plans__meta-item'>&#127968; {plan.balcony}</span>
+              )}
+            </div>
+            <p className='floor-plans__desc'>{plan.desc}</p>
+            <ul className='floor-plans__features'>
+              {plan.features.map((f) => (
+                <li key={f}>
+                  <span className='floor-plans__check'>&#10003;</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <div className='floor-plans__pricing'>
+              <div className='floor-plans__price-cards'>
+                <div className='floor-plans__price-card'>
+                  <span className='floor-plans__price-label'>{fp.monthlyRent}</span>
+                  <span className='floor-plans__price-value'>{fp.contactForPrice}</span>
+                </div>
+                <div className='floor-plans__price-card'>
+                  <span className='floor-plans__price-label'>{fp.dailyRate}</span>
+                  <span className='floor-plans__price-value'>{fp.contactForPrice}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

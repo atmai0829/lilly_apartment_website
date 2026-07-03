@@ -1,0 +1,127 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about__visual {
+  position: relative;
+}
+
+.about__img-main {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 620px;
+}
+
+.about__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about__img-accent {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 55%;
+  border-radius: 12px;
+  border: 4px solid var(--white);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.about__badge {
+  position: absolute;
+  top: 2rem;
+  left: -1.5rem;
+  background: var(--gold);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(139, 115, 85, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about__badge-year {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.about__badge-num {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.about__content {
+  padding-left: 1rem;
+}
+
+.about__text {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about__highlights {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about__highlight {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.about__highlight-icon {
+  font-size: 1.5rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.about__highlight h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 0.2rem;
+}
+
+.about__highlight p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about__visual {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .about__content {
+    padding-left: 0;
+  }
+
+  .about__badge {
+    left: -0.5rem;
+  }
+}

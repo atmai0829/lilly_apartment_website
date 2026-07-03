@@ -1,0 +1,124 @@
+.contact {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2c1810 100%);
+  color: var(--white);
+}
+
+.contact .section__label {
+  color: var(--gold);
+}
+
+.contact .section__title {
+  color: var(--white);
+}
+
+.contact__centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.contact__info-text {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+/* Big phone CTA */
+.contact__phone-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--gold);
+  color: var(--white);
+  text-decoration: none;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  box-shadow: 0 8px 30px rgba(139, 115, 85, 0.45);
+}
+
+.contact__phone-cta:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
+.contact__airbnb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #ff5a5f;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 2.25rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  box-shadow: 0 8px 30px rgba(255, 90, 95, 0.4);
+}
+
+.contact__airbnb-cta:hover {
+  background: #e0484d;
+  transform: translateY(-2px);
+}
+
+.contact__airbnb-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.contact__phone-icon {
+  font-size: 1.5rem;
+}
+
+.contact__phone-number {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* Detail rows */
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.contact__detail-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contact__detail-icon {
+  font-size: 1.25rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.contact__detail-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 0.2rem;
+}
+
+.contact__detail-value {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
