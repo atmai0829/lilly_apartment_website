@@ -18,8 +18,8 @@ export default function About() {
             </div>
             <div className='about__img-accent'>
               <img
-                src='/apartmentpictures/planB_1.jpeg'
-                alt='Lilly Apartment - Plan B View'
+                src='/apartmentpictures/planA_6.jpg'
+                alt='Lilly Apartment - Plan A View'
                 className='about__img'
               />
             </div>

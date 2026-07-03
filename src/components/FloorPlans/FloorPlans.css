@@ -45,8 +45,8 @@
 
 .floor-plans__detail {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -57,8 +57,9 @@
 }
 
 .floor-plans__diagram {
+  position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 100%;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.13);
@@ -66,8 +67,49 @@
 
 .floor-plans__diagram-img {
   width: 100%;
-  height: auto;
+  height: 480px;
+  object-fit: cover;
   display: block;
+  transition: opacity 0.25s ease;
+}
+
+.floor-plans__photo-nav {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.floor-plans__photo-btn {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.floor-plans__photo-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.floor-plans__photo-counter {
+  color: #fff;
+  font-size: 0.78rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
 }
 
 .floor-plans__name {

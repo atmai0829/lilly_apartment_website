@@ -21,7 +21,7 @@ export default function Location() {
                 105 H&#224; K&#7923; Ng., An H&#7843;i, &#272;&#224; N&#7861;ng 550000, Vietnam
               </p>
               <a
-                href='https://www.google.com/maps/search/105+Ha+Ky+Ngo+An+Hai+Da+Nang+550000+Vietnam'
+                href='https://maps.app.goo.gl/nmVPH3PsWC2sz3Pg8'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='btn btn--outline btn--sm'

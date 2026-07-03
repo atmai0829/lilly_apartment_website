@@ -1,12 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './FloorPlans.css';
 import { useLanguage } from '../../context/LanguageContext';
 
-const PLAN_IMAGES = {
-  'plan-a': '/plan_A.png',
-  'plan-b': '/plan_B.png',
-  'plan-c': '/plan_C.png',
-  'plan-d': '/plan_D.png',
+const PLAN_PHOTOS = {
+  'plan-a': [
+    '/apartmentpictures/planA_1.jpg',
+    '/apartmentpictures/planA_2.jpg',
+    '/apartmentpictures/planA_3.jpg',
+    '/apartmentpictures/planA_4.jpg',
+    '/apartmentpictures/planA_5.jpg',
+    '/apartmentpictures/planA_6.jpg',
+    '/apartmentpictures/planA_7.jpg',
+    '/apartmentpictures/planA_bathroom.jpg',
+    '/apartmentpictures/planA_bathroom2.jpg',
+    '/apartmentpictures/planA_counter.jpg',
+    '/apartmentpictures/planA_kitchen.jpg',
+  ],
+  'plan-b': [
+    '/apartmentpictures/planB_1.jpg',
+    '/apartmentpictures/planB_2.jpg',
+    '/apartmentpictures/planB_3.jpg',
+    '/apartmentpictures/planB_4.jpg',
+    '/apartmentpictures/planB_5.jpg',
+    '/apartmentpictures/planB_6.jpg',
+    '/apartmentpictures/planB_7.jpg',
+    '/apartmentpictures/planB_8.jpg',
+  ],
+  'plan-c': [
+    '/apartmentpictures/planC_1new.jpg',
+    '/apartmentpictures/planC_2.jpg',
+    '/apartmentpictures/planC_3.jpg',
+    '/apartmentpictures/planC_4.jpg',
+    '/apartmentpictures/planC_tv.jpg',
+  ],
 };
 
 export default function FloorPlans() {
@@ -18,7 +44,16 @@ export default function FloorPlans() {
   }));
 
   const [selected, setSelected] = useState('plan-a');
+  const [photoIndex, setPhotoIndex] = useState(0);
   const plan = plans.find((p) => p.id === selected);
+  const photos = PLAN_PHOTOS[selected];
+
+  useEffect(() => {
+    setPhotoIndex(0);
+  }, [selected]);
+
+  const prevPhoto = () => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length);
+  const nextPhoto = () => setPhotoIndex((i) => (i + 1) % photos.length);
 
   return (
     <section id='floor-plans' className='floor-plans section section--alt'>
@@ -45,10 +80,15 @@ export default function FloorPlans() {
           <div className='floor-plans__preview'>
             <div className='floor-plans__diagram'>
               <img
-                src={PLAN_IMAGES[plan.id]}
-                alt={plan.name + ' floor plan'}
+                src={photos[photoIndex]}
+                alt={plan.name + ' photo ' + (photoIndex + 1)}
                 className='floor-plans__diagram-img'
               />
+              <div className='floor-plans__photo-nav'>
+                <button className='floor-plans__photo-btn' onClick={prevPhoto} aria-label='Previous photo'>&#8249;</button>
+                <span className='floor-plans__photo-counter'>{photoIndex + 1} / {photos.length}</span>
+                <button className='floor-plans__photo-btn' onClick={nextPhoto} aria-label='Next photo'>&#8250;</button>
+              </div>
             </div>
           </div>
 
@@ -56,7 +96,7 @@ export default function FloorPlans() {
             <h3 className='floor-plans__name'>{plan.name}</h3>
             <p className='floor-plans__tagline'>{plan.tagline}</p>
             <div className='floor-plans__meta'>
-              <span className='floor-plans__meta-item'>&#127761; {plan.beds}</span>
+              <span className='floor-plans__meta-item'>🛌 {plan.beds}</span>
               <span className='floor-plans__meta-item'>&#128703; {plan.baths}</span>
               <span className='floor-plans__meta-item'>{plan.view}</span>
               {plan.balcony && (

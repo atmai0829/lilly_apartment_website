@@ -3,15 +3,15 @@ import "./Gallery.css";
 import { useLanguage } from "../../context/LanguageContext";
 
 const galleryItems = [
-  { id: 1, src: "/apartmentpictures/planB_1.jpeg", span: "normal" },
-  { id: 2, src: "/apartmentpictures/two_bedroom.JPG", span: "normal" },
-  { id: 3, src: "/apartmentpictures/washer_dryer.JPG", span: "normal" },
-  { id: 4, src: "/apartmentpictures/full_kitchen.jpg", span: "normal" },
-  { id: 5, src: "/apartmentpictures/closet.JPG", span: "normal" },
-  { id: 6, src: "/apartmentpictures/bathroom1.JPG", span: "normal" },
-  { id: 7, src: "/apartmentpictures/bathroom2.jpg", span: "normal" },
-  { id: 8, src: "/apartmentpictures/event_lounge.jpeg", span: "normal" },
-  { id: 9, src: "/apartmentpictures/front.jpeg", span: "normal" },
+  { id: 1,  src: "/apartmentpictures/event_lounge.jpeg" },
+  { id: 2,  src: "/apartmentpictures/counter1.jpg" },
+  { id: 3,  src: "/apartmentpictures/planB_5.jpg" },
+  { id: 4,  src: "/apartmentpictures/planA_1.jpg" },
+  { id: 5,  src: "/apartmentpictures/planB_7.jpg" },
+  { id: 6,  src: "/apartmentpictures/planA_6.jpg" },
+  { id: 7,  src: "/apartmentpictures/planC_1new.jpg" },
+  { id: 8,  src: "/apartmentpictures/planC_tv.jpg" },
+  { id: 9,  src: "/apartmentpictures/planA_kitchen.jpg" },
 ];
 
 export default function Gallery() {
@@ -66,7 +66,7 @@ export default function Gallery() {
           {items.map((item, index) => (
             <div
               key={item.id}
-              className={"gallery__item gallery__item--" + item.span}
+              className={"gallery__item" + (index === 0 ? " gallery__item--featured" : "")}
               onClick={() => setLightbox(index)}
               role="button"
               tabIndex={0}

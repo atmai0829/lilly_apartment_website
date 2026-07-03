@@ -48,6 +48,35 @@
   transform: translateY(-2px);
 }
 
+.contact__airbnb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #ff5a5f;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 2.25rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  box-shadow: 0 8px 30px rgba(255, 90, 95, 0.4);
+}
+
+.contact__airbnb-cta:hover {
+  background: #e0484d;
+  transform: translateY(-2px);
+}
+
+.contact__airbnb-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
 .contact__phone-icon {
   font-size: 1.5rem;
 }
