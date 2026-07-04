@@ -46,12 +46,28 @@ export default function FloorPlans() {
 
   const [selected, setSelected] = useState("plan-a");
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const plan = plans.find((p) => p.id === selected);
   const photos = PLAN_PHOTOS[selected];
 
   useEffect(() => {
     setPhotoIndex(0);
   }, [selected]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") prevPhoto();
+      if (e.key === "ArrowRight") nextPhoto();
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [lightboxOpen, photoIndex]);
 
   const prevPhoto = () =>
     setPhotoIndex((i) => (i - 1 + photos.length) % photos.length);
@@ -83,17 +99,18 @@ export default function FloorPlans() {
 
         <div className="floor-plans__detail">
           <div className="floor-plans__preview">
-            <div className="floor-plans__diagram">
+            <div className="floor-plans__diagram" onClick={() => setLightboxOpen(true)}>
               <img
                 src={photos[photoIndex]}
                 alt={plan.name + " photo " + (photoIndex + 1)}
                 className="floor-plans__diagram-img"
                 loading="lazy"
               />
+              <div className="floor-plans__zoom-hint">&#128269; Click to enlarge</div>
               <div className="floor-plans__photo-nav">
                 <button
                   className="floor-plans__photo-btn"
-                  onClick={prevPhoto}
+                  onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
                   aria-label="Previous photo"
                 >
                   &#8249;
@@ -103,7 +120,7 @@ export default function FloorPlans() {
                 </span>
                 <button
                   className="floor-plans__photo-btn"
-                  onClick={nextPhoto}
+                  onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
                   aria-label="Next photo"
                 >
                   &#8250;
@@ -159,6 +176,44 @@ export default function FloorPlans() {
           </div>
         </div>
       </div>
+
+      {lightboxOpen && (
+        <div
+          className="fp-lightbox"
+          onClick={() => setLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            className="fp-lightbox__close"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          <button
+            className="fp-lightbox__nav fp-lightbox__nav--prev"
+            onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+            aria-label="Previous"
+          >
+            &#8249;
+          </button>
+          <img
+            src={photos[photoIndex]}
+            alt={plan.name + " photo " + (photoIndex + 1)}
+            className="fp-lightbox__img"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            className="fp-lightbox__nav fp-lightbox__nav--next"
+            onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+            aria-label="Next"
+          >
+            &#8250;
+          </button>
+          <p className="fp-lightbox__counter">{photoIndex + 1} / {photos.length}</p>
+        </div>
+      )}
     </section>
   );
 }

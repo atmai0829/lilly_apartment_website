@@ -107,11 +107,8 @@ export default function Gallery() {
             &times;
           </button>
           <button
-            className="lightbox__prev"
-            onClick={(e) => {
-              e.stopPropagation();
-              prev();
-            }}
+            className="lightbox__nav lightbox__nav--prev"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
             aria-label="Previous"
           >
             &#8249;
@@ -123,16 +120,13 @@ export default function Gallery() {
             onClick={(e) => e.stopPropagation()}
           />
           <button
-            className="lightbox__next"
-            onClick={(e) => {
-              e.stopPropagation();
-              next();
-            }}
+            className="lightbox__nav lightbox__nav--next"
+            onClick={(e) => { e.stopPropagation(); next(); }}
             aria-label="Next"
           >
             &#8250;
           </button>
-          <p className="lightbox__caption">{items[lightbox].label}</p>
+          <p className="lightbox__counter">{lightbox + 1} / {items.length}</p>
         </div>
       )}
     </section>
