@@ -42,6 +42,13 @@ export default function Navbar() {
       </button>
 
       <nav className={`navbar__nav ${menuOpen ? "navbar__nav--open" : ""}`}>
+        <button
+          className="navbar__close"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          &times;
+        </button>
         {navLinks.map((link) => (
           <a
             key={link.href}
@@ -55,6 +62,9 @@ export default function Navbar() {
         {/* <a href="#contact" className="navbar__cta" onClick={handleLinkClick}>
           {t.nav.bookTour}
         </a> */}
+        <a href="tel:+84787590468" className="navbar__phone">
+          &#128222; +84 0787 590 468
+        </a>
         <div className="lang-toggle">
           {["en", "vi", "ko"].map((l) => (
             <button
