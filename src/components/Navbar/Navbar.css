@@ -96,6 +96,27 @@
   transform: translateY(-1px);
 }
 
+/* ── Phone link ── */
+.navbar__phone {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.navbar--scrolled .navbar__phone {
+  color: var(--charcoal);
+}
+
+.navbar__phone:hover {
+  color: var(--gold);
+}
+
 /* ── Language toggle ── */
 .lang-toggle {
   display: flex;
@@ -135,6 +156,10 @@
   border: none;
   cursor: pointer;
   padding: 4px;
+}
+
+.navbar__close {
+  display: none;
 }
 
 .navbar__burger span {
@@ -193,6 +218,25 @@
     display: flex;
   }
 
+  .navbar__close {
+    display: flex;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--charcoal);
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .navbar__close:hover {
+    color: var(--gold);
+  }
+
   .navbar__link {
     color: var(--charcoal);
     font-size: 1.25rem;
@@ -201,5 +245,10 @@
   .navbar__cta {
     font-size: 1rem;
     padding: 0.75rem 2rem;
+  }
+
+  .navbar__phone {
+    color: var(--charcoal);
+    font-size: 1.1rem;
   }
 }
