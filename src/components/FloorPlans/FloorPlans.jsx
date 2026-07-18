@@ -17,16 +17,16 @@ const PLAN_PHOTOS = {
     base + "apartmentpictures/planA_counter.webp",
     base + "apartmentpictures/planA_kitchen.webp",
   ],
-  "plan-b": [
-    base + "apartmentpictures/planB_1.webp",
-    base + "apartmentpictures/planB_2.webp",
-    base + "apartmentpictures/planB_3.webp",
-    base + "apartmentpictures/planB_4.webp",
-    base + "apartmentpictures/planB_5.webp",
-    base + "apartmentpictures/planB_6.webp",
-    base + "apartmentpictures/planB_7.webp",
-    base + "apartmentpictures/planB_8.webp",
-  ],
+  // "plan-b": [
+  //   base + "apartmentpictures/planB_1.webp",
+  //   base + "apartmentpictures/planB_2.webp",
+  //   base + "apartmentpictures/planB_3.webp",
+  //   base + "apartmentpictures/planB_4.webp",
+  //   base + "apartmentpictures/planB_5.webp",
+  //   base + "apartmentpictures/planB_6.webp",
+  //   base + "apartmentpictures/planB_7.webp",
+  //   base + "apartmentpictures/planB_8.webp",
+  // ],
   "plan-c": [
     base + "apartmentpictures/planC_1new.webp",
     base + "apartmentpictures/planC_2.webp",
@@ -99,18 +99,26 @@ export default function FloorPlans() {
 
         <div className="floor-plans__detail">
           <div className="floor-plans__preview">
-            <div className="floor-plans__diagram" onClick={() => setLightboxOpen(true)}>
+            <div
+              className="floor-plans__diagram"
+              onClick={() => setLightboxOpen(true)}
+            >
               <img
                 src={photos[photoIndex]}
                 alt={plan.name + " photo " + (photoIndex + 1)}
                 className="floor-plans__diagram-img"
                 loading="lazy"
               />
-              <div className="floor-plans__zoom-hint">&#128269; Click to enlarge</div>
+              <div className="floor-plans__zoom-hint">
+                &#128269; Click to enlarge
+              </div>
               <div className="floor-plans__photo-nav">
                 <button
                   className="floor-plans__photo-btn"
-                  onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevPhoto();
+                  }}
                   aria-label="Previous photo"
                 >
                   &#8249;
@@ -120,7 +128,10 @@ export default function FloorPlans() {
                 </span>
                 <button
                   className="floor-plans__photo-btn"
-                  onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextPhoto();
+                  }}
                   aria-label="Next photo"
                 >
                   &#8250;
@@ -193,7 +204,10 @@ export default function FloorPlans() {
           </button>
           <button
             className="fp-lightbox__nav fp-lightbox__nav--prev"
-            onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prevPhoto();
+            }}
             aria-label="Previous"
           >
             &#8249;
@@ -206,12 +220,17 @@ export default function FloorPlans() {
           />
           <button
             className="fp-lightbox__nav fp-lightbox__nav--next"
-            onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              nextPhoto();
+            }}
             aria-label="Next"
           >
             &#8250;
           </button>
-          <p className="fp-lightbox__counter">{photoIndex + 1} / {photos.length}</p>
+          <p className="fp-lightbox__counter">
+            {photoIndex + 1} / {photos.length}
+          </p>
         </div>
       )}
     </section>
