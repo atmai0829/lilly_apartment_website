@@ -117,6 +117,25 @@
   color: var(--gold);
 }
 
+.navbar__airbnb {
+  text-decoration: none;
+  background: #ff5a5f;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.navbar__airbnb:hover {
+  background: #e0484d;
+  transform: translateY(-1px);
+}
+
 /* ── Language toggle ── */
 .lang-toggle {
   display: flex;
@@ -250,5 +269,10 @@
   .navbar__phone {
     color: var(--charcoal);
     font-size: 1.1rem;
+  }
+
+  .navbar__airbnb {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
   }
 }
