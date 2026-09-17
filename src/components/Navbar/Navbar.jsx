@@ -59,11 +59,17 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
-        {/* <a href="#contact" className="navbar__cta" onClick={handleLinkClick}>
-          {t.nav.bookTour}
-        </a> */}
         <a href="tel:+84787590468" className="navbar__phone">
           &#128222; +84 0787 590 468
+        </a>
+        <a
+          href="https://www.airbnb.com/rooms/1717487566579421174?guests=1&adults=1&s=67&unique_share_id=c75d5efa-8724-4dc7-9ff9-bda4a20c8668"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="navbar__airbnb"
+          onClick={handleLinkClick}
+        >
+          {t.contact.airbnbBook}
         </a>
         <div className="lang-toggle">
           {["en", "vi", "ko"].map((l) => (
